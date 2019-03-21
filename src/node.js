@@ -36,19 +36,13 @@ class Node {
 
 	swapWithParent() {	
 		if (this.parent) {
-
 			if (this.parent.parent) {	
 				if (this.parent.parent.left == this.parent) this.parent.parent.left = this;
 				else this.parent.parent.right = this;
-			}
-					 
-		
-				
+			}		
 			if (this.right) this.right.parent = this.parent;
 			if (this.left) this.left.parent = this.parent;
-		
 			var temp;
-			
 			if (this.parent.left == this) {
 				temp = this.parent.right;
 				if (this.right) this.parent.right = this.right;
@@ -61,7 +55,6 @@ class Node {
 				else this.parent = null;
 				this.left.parent = this;
 				if (temp) this.right.parent = this;
-	
 			}
 			else if ( this.parent.right == this) {
 				temp = this.parent.left;
@@ -75,39 +68,8 @@ class Node {
 				else this.parent = null;
 				this.left.parent = this;
 				this.right.parent = this;
-			}
-			
-			
-		
-	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+			}	
+		}
 			/*
 			if (this.right) this.right.parent = this.parent;
 			if (this.left) this.left.parent = this.parent;
@@ -120,12 +82,9 @@ class Node {
 				}
 				if (this.right) this.parent.right = this.right;
 				if (this.left) this.parent.left = this.left;
-				
 				if (temp) this.right = temp;
 				this.left = this.parent;
 				this.parent.parent = this;
-				
-				
 			}
 			if (this == this.parent.right) {
 				if (this.parent.left) {
@@ -137,62 +96,9 @@ class Node {
 				
 				if (temp) this.left = temp;
 				this.right = this.parent;
-				this.parent.parent = this;		
-				
-			}
-			
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			/*var left1 = this.parent.left;
-			var right1 = this.parent.right;
-			var parent1 = this.parent.parent;
-			var change = this.parent;
-			if (this.parent.parent) {
-				if (this.parent.parent.left == this.parent) this.parent.parent.left = this;
-				else this.parent.parent.right = this;
-			}
-			if (this.parent.left == this && this.parent.left.parent) this.left.parent.left.parent = this;
-			if (this.parent.right == this && this.parent.right.parent) this.left.parent.right.parent = this;
-			
-			if (this.left) {
-				this.left.parent = this.parent;
-			}
-			if (this.right) {
-				this.right.parent = this.parent;
-			}
-			
-
-			if (this.parent.left === this) {
-				this.parent.left = this.left;
-				this.parent.right = this.right;
-				this.left = change;
-				this.right = right1;
-			//	this.parent = parent1;
-				
-			}
-			if (this.parent.right === this) {
-				this.parent.left = this.left;
-				this.parent.right = this.right;
-				this.left = left1;
-				this.right = change;
-			//	this.parent = parent1;
-				
+				this.parent.parent = this;			
 			}
 			*/
-			
-			
-		
 	}
 }
 
