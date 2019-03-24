@@ -103,7 +103,7 @@ class MaxHeap {
 				nodeParentIndex = this.parentNodes.indexOf(node.parent);
 				if (nodeIndex != -1) {
 					if (nodeParentIndex != -1) {
-						var temp = 0;
+						var temp;
 						temp = this.parentNodes[nodeIndex];
 						this.parentNodes[nodeIndex] = this.parentNodes[nodeParentIndex];
 						this.parentNodes[nodeParentIndex] = temp;
@@ -126,12 +126,12 @@ class MaxHeap {
 		var nodeChildIndex;
 		if (node.left && node.right) {
 			if (node.left.priority > node.right.priority) directNode = node.left;
-			if (node.left.priority <= node.right.priority) directNode = node.right;
+			else if (node.left.priority <= node.right.priority) directNode = node.right;
 		}
-		if (node.left && !node.right) {
-			if (node.left.priority > node.priority) directNode = node.left;
-		} 
-		if (!node.left && !node.right) return;
+		else if (node.left && node.left.priority > node.priority) {
+			directNode = node.left;
+		}
+		else return;
 
 		
 		nodeIndex = this.parentNodes.indexOf(node);
@@ -143,10 +143,10 @@ class MaxHeap {
 				this.parentNodes[nodeIndex] = this.parentNodes[nodeChildIndex];
 				this.parentNodes[nodeChildIndex] = temp;
 			}
-			else this.parentNodes[nodeChildIndex] = node;
+			else  this.parentNodes[nodeChildIndex] = node;
 		}
-		if (node == this.root) this.root = directNode;
-
+		if (node == this.root)  this.root = directNode;
+		
 		directNode.swapWithParent();
 		this.shiftNodeDown(node);
 
